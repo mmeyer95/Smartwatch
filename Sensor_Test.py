@@ -97,7 +97,7 @@ def count_cycles(t, data, name):
         peak_x.append(data[i])
     plt.plot(peak_t,peak_x, 'r*', linewidth=3)
     
-def km_filter(t, data):
+def detect_lift(t, data):
     state = [] #watch face off
     on = False
     high = -8.80
@@ -126,7 +126,7 @@ t, x, y, z, net = display_data(data)
 filt_x = low_pass(x, "X")
 filt_y = low_pass(y, "Y")
 filt_z = low_pass(z, "Z")
-km_filter(t, filt_x)
+detect_lift(t, filt_x)
 filt_net = low_pass(net, "Vector Sum")
 count_cycles(t, filt_x, "X")
 count_cycles(t, filt_y, "Y")
